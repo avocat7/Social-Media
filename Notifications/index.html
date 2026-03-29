@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notifications - Exported from UXMagic Copilot">
+    <title>Notifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['var(--font-heading-name)', 'sans-serif'],
+            body: ['var(--font-body-name)', 'sans-serif'],
+          },
+          spacing: {
+            base: 'var(--space-base)',
+          },
+          borderRadius: {
+            small: 'var(--radius-small)',
+            large: 'var(--radius-large)',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+          colors: {
+            surface: {
+              900: '#0d0d0f',
+              800: '#141417',
+              700: '#1a1a1f',
+              600: '#202026',
+              500: '#26262e',
+              400: '#2e2e38',
+              300: '#3a3a46',
+              200: '#4a4a58',
+              100: '#5e5e70',
+              50: '#7a7a8e',
+            },
+            accent: {
+              DEFAULT: '#7c6af7',
+              hover: '#9585f9',
+              glow: 'rgba(124,106,247,0.25)',
+              muted: 'rgba(124,106,247,0.12)',
+            },
+          },
+        }
+      }
+    }
+  
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#007bff">
+    <meta name="color-scheme" content="light dark">
+    <meta name="author" content="UXMagic Copilot">
+</head>
+<body>
+    
+
+  <div class="flex" style="min-height: 100vh;">
+
+    <!-- Collapsible Sidebar -->
+    <aside class="sidebar flex flex-col bg-surface-800 border-r border-surface-600 flex-shrink-0" style="min-height: 100vh;">
+
+      <!-- Logo -->
+      <div class="flex items-center px-4 py-5 gap-3 flex-shrink-0">
+        <div class="w-9 h-9 rounded-small flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #7c6af7 0%, #a78bfa 100%); box-shadow: 0 0 16px rgba(124,106,247,0.45);">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 2L15.5 6V12L9 16L2.5 12V6L9 2Z" fill="white" fill-opacity="0.9"></path>
+            <circle cx="9" cy="9" r="2.5" fill="white"></circle>
+          </svg>
+        </div>
+        <span class="logo-full font-heading font-bold text-lg text-neutral-50 tracking-tight">Nexus</span>
+      </div>
+
+      <!-- Nav Items -->
+      <nav class="flex flex-col gap-1 px-2 flex-1 mt-1">
+
+        <!-- Home -->
+        <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/home-feed" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 9.5L10 3L17 9.5V17H13V13H7V17H3V9.5Z" stroke="#7a7a8e" stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Home</span>
+        </a>
+
+        <!-- Explore -->
+        <a href="#" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="#7a7a8e" stroke-width="1.5"></circle>
+              <path d="M13 7L11 11L7 13L9 9L13 7Z" fill="#7a7a8e"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Explore</span>
+        </a>
+
+        <!-- Chats -->
+        <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/chats" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline relative">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 relative">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 4H17V13H11L7 17V13H3V4Z" stroke="#7a7a8e" stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+            <span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full flex items-center justify-center text-white font-bold" style="font-size: 9px; background: #7c6af7;">3</span>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400 flex items-center gap-2">
+            Chats
+            <span class="px-1.5 py-0.5 rounded-full text-white font-bold" style="font-size: 9px; background: #7c6af7; line-height: 1.4;">3</span>
+          </span>
+        </a>
+
+        <!-- Notifications (Active — dot cleared) -->
+        <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/notifications" class="nav-pill active flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline relative">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 relative">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 3C10 3 6 5 6 10V14H14V10C14 5 10 3 10 3Z" fill="#7c6af7" stroke="#7c6af7" stroke-width="1.2" stroke-linejoin="round"></path>
+              <path d="M8 14C8 15.1 8.9 16 10 16C11.1 16 12 15.1 12 14" stroke="#7c6af7" stroke-width="1.5"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-semibold text-sm" style="color: #7c6af7;">Notifications</span>
+        </a>
+
+        <!-- Bookmarks -->
+        <a href="#" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 3H15V17L10 14L5 17V3Z" stroke="#7a7a8e" stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Bookmarks</span>
+        </a>
+
+        <!-- Settings -->
+        <a href="#" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="2.5" stroke="#7a7a8e" stroke-width="1.5"></circle>
+              <path d="M10 2V4M10 16V18M2 10H4M16 10H18M4.22 4.22L5.64 5.64M14.36 14.36L15.78 15.78M4.22 15.78L5.64 14.36M14.36 5.64L15.78 4.22" stroke="#7a7a8e" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Settings</span>
+        </a>
+
+      </nav>
+
+      <!-- Profile Avatar at Bottom -->
+      <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/profile" class="nav-pill flex items-center gap-3 px-3 py-3 mx-2 mb-3 rounded-small cursor-pointer no-underline flex-shrink-0">
+        <div class="relative flex-shrink-0">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&amp;h=40&amp;fit=crop&amp;crop=face" alt="Profile" class="w-9 h-9 rounded-small object-cover border-2" style="border-color: rgba(124,106,247,0.5);">
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-surface-800" style="background: #22c55e;"></span>
+        </div>
+        <div class="logo-full flex flex-col min-w-0">
+          <span class="font-body font-semibold text-sm text-neutral-100 truncate">Alex Rivera</span>
+          <span class="font-body text-xs text-neutral-500 truncate">@alexrivera</span>
+        </div>
+      </a>
+
+    </aside>
+
+    <!-- Main Notifications Content -->
+    <main class="flex-1 flex flex-col" style="background: #0d0d0f; min-height: 100vh;">
+
+      <!-- Top Bar -->
+      <header class="flex items-center justify-between px-6 py-4 border-b border-surface-600 flex-shrink-0 sticky top-0 z-10" style="background: rgba(13,13,15,0.92); backdrop-filter: blur(12px);">
+        <div>
+          <h1 class="font-heading font-bold text-xl text-neutral-50" style="letter-spacing: var(--letter-spacing-heading);">Notifications</h1>
+          <p class="font-body text-xs text-neutral-500 mt-0.5">Your recent activity</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <!-- Mark All Read -->
+          <button class="mark-read-btn flex items-center gap-2 px-4 py-2 rounded-small border border-surface-400 font-body text-sm text-neutral-400" style="background: #141417;" onclick="markAllRead()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7L5.5 10.5L12 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Mark all read
+          </button>
+          <!-- Filter/Settings -->
+          <button class="action-btn w-9 h-9 flex items-center justify-center rounded-small text-neutral-400 border border-surface-400" style="background: #141417;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M2 4H14M4 8H12M6 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Filter Tabs -->
+      <div class="flex items-center gap-0 px-6 border-b border-surface-600 flex-shrink-0" style="background: rgba(13,13,15,0.85);">
+        <button class="filter-tab active font-body font-medium text-sm px-4 py-3.5">All</button>
+        <button class="filter-tab font-body font-medium text-sm px-4 py-3.5">Mentions</button>
+        <button class="filter-tab font-body font-medium text-sm px-4 py-3.5">Likes</button>
+        <button class="filter-tab font-body font-medium text-sm px-4 py-3.5">Follows</button>
+        <button class="filter-tab font-body font-medium text-sm px-4 py-3.5">Reposts</button>
+      </div>
+
+      <!-- Notifications Feed -->
+      <div class="flex-1 overflow-y-auto" style="max-height: 1200px;">
+        <div class="max-w-2xl mx-auto">
+
+          <!-- Section: New — Today -->
+          <div class="px-6 py-3 flex items-center gap-3 sticky top-0 z-10" style="background: rgba(13,13,15,0.95); backdrop-filter: blur(8px);">
+            <span class="font-body font-semibold text-xs text-neutral-500 uppercase tracking-widest">New</span>
+            <div class="flex-1 h-px bg-surface-500"></div>
+            <span class="px-2 py-0.5 rounded-full font-body text-xs font-semibold text-white" style="background: #7c6af7; font-size: 10px;">5 unread</span>
+          </div>
+
+          <!-- Notification 1: Like (Unread) -->
+          <div class="notif-row unread flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <!-- Icon Badge -->
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Maya Chen" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-like" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                  <path d="M5 8.5C5 8.5 1 6 1 3.5C1 2.4 1.9 1.5 3 1.5C3.8 1.5 4.5 2 5 2.7C5.5 2 6.2 1.5 7 1.5C8.1 1.5 9 2.4 9 3.5C9 6 5 8.5 5 8.5Z"></path>
+                </svg>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm text-neutral-200 leading-relaxed">
+                  <span class="font-semibold text-neutral-100">Maya Chen</span>
+                  <span class="text-neutral-400"> liked your post</span>
+                </p>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #7c6af7;"></span>
+                  <span class="font-body text-xs text-neutral-500 whitespace-nowrap">2m ago</span>
+                </div>
+              </div>
+              <!-- Content Preview -->
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-400" style="background: #1a1a1f;">
+                <p class="font-body text-xs text-neutral-500 leading-relaxed truncate">"Just shipped the new design system for our product 🎉 After 3 months of iteration, we finally landed on a token-based approach..."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 2: Comment (Unread) -->
+          <div class="notif-row unread flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Jordan Kim" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-comment" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M1 2H9V7H5.5L3.5 9V7H1V2Z" fill="currentColor"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm text-neutral-200 leading-relaxed">
+                  <span class="font-semibold text-neutral-100">Jordan Kim</span>
+                  <span class="text-neutral-400"> commented on your post</span>
+                </p>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #7c6af7;"></span>
+                  <span class="font-body text-xs text-neutral-500 whitespace-nowrap">14m ago</span>
+                </div>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-400" style="background: #1a1a1f;">
+                <p class="font-body text-xs text-neutral-400 leading-relaxed">"This is exactly the approach we've been trying to implement. The token-first mindset is a game changer for cross-platform consistency 🔥"</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 3: Follow (Unread) -->
+          <div class="notif-row unread flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Priya Nair" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-follow" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="5" cy="3.5" r="2" fill="currentColor"></circle>
+                  <path d="M1 9C1 7.3 2.8 6 5 6C7.2 6 9 7.3 9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm text-neutral-200 leading-relaxed">
+                  <span class="font-semibold text-neutral-100">Priya Nair</span>
+                  <span class="text-neutral-400"> started following you</span>
+                </p>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #7c6af7;"></span>
+                  <span class="font-body text-xs text-neutral-500 whitespace-nowrap">38m ago</span>
+                </div>
+              </div>
+              <div class="mt-2 flex items-center gap-3">
+                <div class="flex items-center gap-2 flex-1 min-w-0">
+                  <span class="font-body text-xs text-neutral-500">@priyanair · 4.2k followers · Product Designer</span>
+                </div>
+                <button class="px-3 py-1.5 rounded-small font-body text-xs font-semibold flex-shrink-0 text-white" style="background: linear-gradient(135deg, #7c6af7 0%, #9585f9 100%);">Follow back</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 4: Mention (Unread) -->
+          <div class="notif-row unread flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Tom Walsh" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-mention" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="5" cy="5" r="2" stroke="currentColor" stroke-width="1.2"></circle>
+                  <path d="M7 5C7 5 7 8 5 8C3 8 2 6.5 2 5C2 3.1 3.3 2 5 2C6.7 2 8 3.1 8 5V6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm text-neutral-200 leading-relaxed">
+                  <span class="font-semibold text-neutral-100">Tom Walsh</span>
+                  <span class="text-neutral-400"> mentioned you in a post</span>
+                </p>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #7c6af7;"></span>
+                  <span class="font-body text-xs text-neutral-500 whitespace-nowrap">1h ago</span>
+                </div>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-400" style="background: #1a1a1f;">
+                <p class="font-body text-xs text-neutral-400 leading-relaxed">"Shoutout to <span class="text-accent" style="color: #a78bfa;">@alexrivera</span> for the incredible design system breakdown — this is the kind of content that actually moves the needle for teams building at scale."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 5: Multiple Likes (Unread) -->
+          <div class="notif-row unread flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <!-- Stacked avatars -->
+              <div class="relative w-10 h-10">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Sara" class="w-8 h-8 rounded-small object-cover absolute top-0 left-0 border-2 border-surface-900">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Kai" class="w-7 h-7 rounded-small object-cover absolute bottom-0 right-0 border-2 border-surface-900">
+              </div>
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-like" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                  <path d="M5 8.5C5 8.5 1 6 1 3.5C1 2.4 1.9 1.5 3 1.5C3.8 1.5 4.5 2 5 2.7C5.5 2 6.2 1.5 7 1.5C8.1 1.5 9 2.4 9 3.5C9 6 5 8.5 5 8.5Z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm text-neutral-200 leading-relaxed">
+                  <span class="font-semibold text-neutral-100">Sara Okonkwo</span>
+                  <span class="text-neutral-400">, </span>
+                  <span class="font-semibold text-neutral-100">Kai Nakamura</span>
+                  <span class="text-neutral-400"> and </span>
+                  <span class="font-semibold text-neutral-100">14 others</span>
+                  <span class="text-neutral-400"> liked your post</span>
+                </p>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #7c6af7;"></span>
+                  <span class="font-body text-xs text-neutral-500 whitespace-nowrap">2h ago</span>
+                </div>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-400" style="background: #1a1a1f;">
+                <p class="font-body text-xs text-neutral-500 leading-relaxed truncate">"Hot take: most performance problems in modern web apps aren't caused by JavaScript bundle size..."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Earlier -->
+          <div class="px-6 py-3 flex items-center gap-3" style="background: rgba(13,13,15,0.95);">
+            <span class="font-body font-semibold text-xs text-neutral-500 uppercase tracking-widest">Earlier</span>
+            <div class="flex-1 h-px bg-surface-500"></div>
+          </div>
+
+          <!-- Notification 6: Repost (Read) -->
+          <div class="notif-row flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Luca Moretti" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-repost" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M1.5 6.5L3.5 4.5V5.5C3.5 5.5 8 5.5 8 3C8 3 8 7 3.5 7V8L1.5 6.5Z" fill="currentColor"></path>
+                  <path d="M8.5 3.5L6.5 5.5V4.5C6.5 4.5 2 4.5 2 7C2 7 2 3 6.5 3V2L8.5 3.5Z" fill="currentColor"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm leading-relaxed">
+                  <span class="font-semibold text-neutral-300">Luca Moretti</span>
+                  <span class="text-neutral-500"> reposted your post</span>
+                </p>
+                <span class="font-body text-xs text-neutral-600 whitespace-nowrap flex-shrink-0">5h ago</span>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-500" style="background: #141417;">
+                <p class="font-body text-xs text-neutral-600 leading-relaxed truncate">"We ran an A/B test on our onboarding flow last week. Hypothesis: reducing steps from 7 to 4 would improve completion..."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 7: Comment (Read) -->
+          <div class="notif-row flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Kai Nakamura" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-comment" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M1 2H9V7H5.5L3.5 9V7H1V2Z" fill="currentColor"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm leading-relaxed">
+                  <span class="font-semibold text-neutral-300">Kai Nakamura</span>
+                  <span class="text-neutral-500"> replied to your comment</span>
+                </p>
+                <span class="font-body text-xs text-neutral-600 whitespace-nowrap flex-shrink-0">8h ago</span>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-500" style="background: #141417;">
+                <p class="font-body text-xs text-neutral-600 leading-relaxed">"Totally agree — the friction in onboarding is often the product teaching itself. Removing it too early can hurt retention."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 8: Follow (Read) -->
+          <div class="notif-row flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Zoe Park" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-follow" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="5" cy="3.5" r="2" fill="currentColor"></circle>
+                  <path d="M1 9C1 7.3 2.8 6 5 6C7.2 6 9 7.3 9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm leading-relaxed">
+                  <span class="font-semibold text-neutral-300">Zoe Park</span>
+                  <span class="text-neutral-500"> started following you</span>
+                </p>
+                <span class="font-body text-xs text-neutral-600 whitespace-nowrap flex-shrink-0">Yesterday</span>
+              </div>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="font-body text-xs text-neutral-600">@zoepark · 2.1k followers · UX Researcher</span>
+                <button class="px-3 py-1.5 rounded-small font-body text-xs font-semibold flex-shrink-0 border border-surface-400 text-neutral-400 hover:border-surface-300 hover:text-neutral-200 transition-colors" style="background: #141417;">Follow back</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 9: Mention (Read) -->
+          <div class="notif-row flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Sara Okonkwo" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-mention" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="5" cy="5" r="2" stroke="currentColor" stroke-width="1.2"></circle>
+                  <path d="M7 5C7 5 7 8 5 8C3 8 2 6.5 2 5C2 3.1 3.3 2 5 2C6.7 2 8 3.1 8 5V6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm leading-relaxed">
+                  <span class="font-semibold text-neutral-300">Sara Okonkwo</span>
+                  <span class="text-neutral-500"> mentioned you in a comment</span>
+                </p>
+                <span class="font-body text-xs text-neutral-600 whitespace-nowrap flex-shrink-0">Yesterday</span>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-500" style="background: #141417;">
+                <p class="font-body text-xs text-neutral-600 leading-relaxed">"<span style="color: #7a7a8e;">@alexrivera</span> your post on product onboarding was so timely — we're literally going through this exact debate at work right now."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification 10: Like (Read) -->
+          <div class="notif-row flex items-start gap-4 px-6 py-4 border-b border-surface-600">
+            <div class="relative flex-shrink-0 mt-0.5">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Marco Rossi" class="w-10 h-10 rounded-small object-cover">
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center notif-icon-like" style="border: 2px solid #0d0d0f;">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                  <path d="M5 8.5C5 8.5 1 6 1 3.5C1 2.4 1.9 1.5 3 1.5C3.8 1.5 4.5 2 5 2.7C5.5 2 6.2 1.5 7 1.5C8.1 1.5 9 2.4 9 3.5C9 6 5 8.5 5 8.5Z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <p class="font-body text-sm leading-relaxed">
+                  <span class="font-semibold text-neutral-300">Marco Rossi</span>
+                  <span class="text-neutral-500"> and </span>
+                  <span class="font-semibold text-neutral-300">8 others</span>
+                  <span class="text-neutral-500"> liked your reply</span>
+                </p>
+                <span class="font-body text-xs text-neutral-600 whitespace-nowrap flex-shrink-0">2 days ago</span>
+              </div>
+              <div class="mt-2 px-3 py-2 rounded-small border border-surface-500" style="background: #141417;">
+                <p class="font-body text-xs text-neutral-600 leading-relaxed truncate">"The key was really treating every spacing, color, and radius value as a variable from day one. Makes theming so much easier later on."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Load More -->
+          <div class="flex justify-center py-6">
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-small border border-surface-400 font-body text-sm text-neutral-400 hover:text-neutral-200 hover:border-surface-300 transition-colors" style="background: #141417;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V7L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"></circle>
+              </svg>
+              Load older notifications
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Right Panel: Activity Summary -->
+    <aside class="hidden xl:flex flex-col w-72 border-l border-surface-600 flex-shrink-0 px-4 py-6 gap-6" style="background: #0d0d0f; min-height: 100vh;">
+
+      <!-- Activity Summary -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm text-neutral-400 uppercase tracking-widest mb-3">This Week</h3>
+        <div class="grid grid-cols-2 gap-2">
+          <div class="rounded-large p-3 text-center border border-surface-500" style="background: #141417;">
+            <div class="font-heading font-bold text-2xl text-neutral-50" style="letter-spacing: var(--letter-spacing-heading);">248</div>
+            <div class="font-body text-xs text-neutral-500 mt-0.5 flex items-center justify-center gap-1">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="#f472b6"><path d="M5 8.5C5 8.5 1 6 1 3.5C1 2.4 1.9 1.5 3 1.5C3.8 1.5 4.5 2 5 2.7C5.5 2 6.2 1.5 7 1.5C8.1 1.5 9 2.4 9 3.5C9 6 5 8.5 5 8.5Z"></path></svg>
+              Likes
+            </div>
+          </div>
+          <div class="rounded-large p-3 text-center border border-surface-500" style="background: #141417;">
+            <div class="font-heading font-bold text-2xl text-neutral-50" style="letter-spacing: var(--letter-spacing-heading);">42</div>
+            <div class="font-body text-xs text-neutral-500 mt-0.5 flex items-center justify-center gap-1">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="#a78bfa"><path d="M1 2H9V7H5.5L3.5 9V7H1V2Z"></path></svg>
+              Comments
+            </div>
+          </div>
+          <div class="rounded-large p-3 text-center border border-surface-500" style="background: #141417;">
+            <div class="font-heading font-bold text-2xl text-neutral-50" style="letter-spacing: var(--letter-spacing-heading);">18</div>
+            <div class="font-body text-xs text-neutral-500 mt-0.5 flex items-center justify-center gap-1">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="3.5" r="2" fill="#4ade80"></circle><path d="M1 9C1 7.3 2.8 6 5 6C7.2 6 9 7.3 9 9" stroke="#4ade80" stroke-width="1.2" stroke-linecap="round"></path></svg>
+              Follows
+            </div>
+          </div>
+          <div class="rounded-large p-3 text-center border border-surface-500" style="background: #141417;">
+            <div class="font-heading font-bold text-2xl text-neutral-50" style="letter-spacing: var(--letter-spacing-heading);">7</div>
+            <div class="font-body text-xs text-neutral-500 mt-0.5 flex items-center justify-center gap-1">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="2" stroke="#fbbf24" stroke-width="1.2"></circle></svg>
+              Mentions
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-surface-600"></div>
+
+      <!-- Top Engagers -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm text-neutral-400 uppercase tracking-widest mb-3">Top Engagers</h3>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Maya" class="w-9 h-9 rounded-small object-cover flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <div class="font-body font-semibold text-sm text-neutral-200 truncate">Maya Chen</div>
+              <div class="font-body text-xs text-neutral-500 truncate">12 interactions</div>
+            </div>
+            <div class="flex items-center gap-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#f472b6"><path d="M6 10C6 10 1.5 7 1.5 4C1.5 2.7 2.5 1.8 3.7 1.8C4.5 1.8 5.3 2.3 6 3C6.7 2.3 7.5 1.8 8.3 1.8C9.5 1.8 10.5 2.7 10.5 4C10.5 7 6 10 6 10Z"></path></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 2.5H10.5V8.5H7L5 10.5V8.5H1.5V2.5Z" fill="#a78bfa"></path></svg>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Jordan" class="w-9 h-9 rounded-small object-cover flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <div class="font-body font-semibold text-sm text-neutral-200 truncate">Jordan Kim</div>
+              <div class="font-body text-xs text-neutral-500 truncate">8 interactions</div>
+            </div>
+            <div class="flex items-center gap-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 2.5H10.5V8.5H7L5 10.5V8.5H1.5V2.5Z" fill="#a78bfa"></path></svg>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="#f472b6"><path d="M6 10C6 10 1.5 7 1.5 4C1.5 2.7 2.5 1.8 3.7 1.8C4.5 1.8 5.3 2.3 6 3C6.7 2.3 7.5 1.8 8.3 1.8C9.5 1.8 10.5 2.7 10.5 4C10.5 7 6 10 6 10Z"></path></svg>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Priya" class="w-9 h-9 rounded-small object-cover flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <div class="font-body font-semibold text-sm text-neutral-200 truncate">Priya Nair</div>
+              <div class="font-body text-xs text-neutral-500 truncate">5 interactions</div>
+            </div>
+            <div class="flex items-center gap-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2.2" fill="#4ade80"></circle><path d="M1.5 10.5C1.5 8.6 3.5 7 6 7C8.5 7 10.5 8.6 10.5 10.5" stroke="#4ade80" stroke-width="1.2" stroke-linecap="round"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-surface-600"></div>
+
+      <!-- Notification Preferences -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm text-neutral-400 uppercase tracking-widest mb-3">Preferences</h3>
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small border border-surface-500" style="background: #141417;">
+            <span class="font-body text-sm text-neutral-300">Likes</span>
+            <div class="w-9 h-5 rounded-full relative cursor-pointer" style="background: #7c6af7;">
+              <div class="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white"></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small border border-surface-500" style="background: #141417;">
+            <span class="font-body text-sm text-neutral-300">Comments</span>
+            <div class="w-9 h-5 rounded-full relative cursor-pointer" style="background: #7c6af7;">
+              <div class="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white"></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small border border-surface-500" style="background: #141417;">
+            <span class="font-body text-sm text-neutral-300">New Followers</span>
+            <div class="w-9 h-5 rounded-full relative cursor-pointer" style="background: #7c6af7;">
+              <div class="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white"></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small border border-surface-500" style="background: #141417;">
+            <span class="font-body text-sm text-neutral-300">Mentions</span>
+            <div class="w-9 h-5 rounded-full relative cursor-pointer" style="background: #2e2e38;">
+              <div class="absolute left-0.5 top-0.5 w-4 h-4 rounded-full bg-neutral-400"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <script>
+    function markAllRead() {
+      document.querySelectorAll('.notif-row.unread').forEach(function(row) {
+        row.classList.remove('unread');
+      });
+      document.querySelectorAll('.w-2.h-2.rounded-full[style*="background: #7c6af7"]').forEach(function(dot) {
+        dot.style.display = 'none';
+      });
+      const badge = document.querySelector('.px-2.py-0\\.5.rounded-full.font-body.text-xs.font-semibold.text-white');
+      if (badge) badge.style.display = 'none';
+    }
+
+    document.querySelectorAll('.filter-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+      });
+    });
+  </script>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

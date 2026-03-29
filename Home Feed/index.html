@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Home Feed - Exported from UXMagic Copilot">
+    <title>Home Feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['var(--font-heading-name)', 'sans-serif'],
+            body: ['var(--font-body-name)', 'sans-serif'],
+          },
+          spacing: {
+            base: 'var(--space-base)',
+          },
+          borderRadius: {
+            small: 'var(--radius-small)',
+            large: 'var(--radius-large)',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+          colors: {
+            surface: {
+              900: '#0d0d0f',
+              800: '#141417',
+              700: '#1a1a1f',
+              600: '#202026',
+              500: '#26262e',
+              400: '#2e2e38',
+              300: '#3a3a46',
+              200: '#4a4a58',
+              100: '#5e5e70',
+              50: '#7a7a8e',
+            },
+            accent: {
+              DEFAULT: '#7c6af7',
+              hover: '#9585f9',
+              glow: 'rgba(124,106,247,0.25)',
+              muted: 'rgba(124,106,247,0.12)',
+            },
+          },
+        }
+      }
+    }
+  
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#007bff">
+    <meta name="color-scheme" content="light dark">
+    <meta name="author" content="UXMagic Copilot">
+</head>
+<body>
+    
+
+  <div class="flex" style="min-height: 100vh;">
+
+    <!-- Collapsible Sidebar -->
+    <aside class="sidebar flex flex-col bg-surface-800 border-r border-surface-600 flex-shrink-0" style="min-height: 100vh;">
+
+      <!-- Logo -->
+      <div class="flex items-center px-4 py-5 gap-3 flex-shrink-0">
+        <div class="w-9 h-9 rounded-small flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #7c6af7 0%, #a78bfa 100%); box-shadow: 0 0 16px rgba(124,106,247,0.45);">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 2L15.5 6V12L9 16L2.5 12V6L9 2Z" fill="white" fill-opacity="0.9"></path>
+            <circle cx="9" cy="9" r="2.5" fill="white"></circle>
+          </svg>
+        </div>
+        <span class="logo-full font-heading font-bold text-lg text-neutral-50 tracking-tight">Nexus</span>
+      </div>
+
+      <!-- Nav Items -->
+      <nav class="flex flex-col gap-1 px-2 flex-1 mt-1">
+
+        <!-- Home (Active) -->
+        <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/home-feed" class="nav-pill active flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 9.5L10 3L17 9.5V17H13V13H7V17H3V9.5Z" fill="#7c6af7" stroke="#7c6af7" stroke-width="1.2" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-semibold text-sm" style="color: #7c6af7;">Home</span>
+        </a>
+
+        <!-- Explore -->
+        <a href="#" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="#7a7a8e" stroke-width="1.5"></circle>
+              <path d="M13 7L11 11L7 13L9 9L13 7Z" fill="#7a7a8e"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Explore</span>
+        </a>
+
+        <!-- Chats (with badge) -->
+        <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/chats" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline relative">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 relative">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 4H17V13H11L7 17V13H3V4Z" stroke="#7a7a8e" stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+            <span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-accent flex items-center justify-center text-white font-bold" style="font-size: 9px; background: #7c6af7;">3</span>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400 flex items-center gap-2">
+            Chats
+            <span class="px-1.5 py-0.5 rounded-full text-white font-bold" style="font-size: 9px; background: #7c6af7; line-height: 1.4;">3</span>
+          </span>
+        </a>
+
+        <!-- Notifications (with dot) -->
+        <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/notifications" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline relative">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 relative">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 3C10 3 6 5 6 10V14H14V10C14 5 10 3 10 3Z" stroke="#7a7a8e" stroke-width="1.5" stroke-linejoin="round"></path>
+              <path d="M8 14C8 15.1 8.9 16 10 16C11.1 16 12 15.1 12 14" stroke="#7a7a8e" stroke-width="1.5"></path>
+              <circle cx="15" cy="5" r="2.5" fill="#f472b6"></circle>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400 flex items-center gap-2">
+            Notifications
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #f472b6;"></span>
+          </span>
+        </a>
+
+        <!-- Bookmarks -->
+        <a href="#" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 3H15V17L10 14L5 17V3Z" stroke="#7a7a8e" stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Bookmarks</span>
+        </a>
+
+        <!-- Settings -->
+        <a href="#" class="nav-pill flex items-center gap-3 px-3 py-2.5 rounded-small cursor-pointer no-underline">
+          <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="2.5" stroke="#7a7a8e" stroke-width="1.5"></circle>
+              <path d="M10 2V4M10 16V18M2 10H4M16 10H18M4.22 4.22L5.64 5.64M14.36 14.36L15.78 15.78M4.22 15.78L5.64 14.36M14.36 5.64L15.78 4.22" stroke="#7a7a8e" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <span class="nav-label font-body font-medium text-sm text-neutral-400">Settings</span>
+        </a>
+
+      </nav>
+
+      <!-- Profile Avatar at Bottom -->
+      <a href="/api/copilot/prototype/5d55351c-1a4b-478f-b4df-130a54591cd7/profile" class="nav-pill flex items-center gap-3 px-3 py-3 mx-2 mb-3 rounded-small cursor-pointer no-underline flex-shrink-0">
+        <div class="relative flex-shrink-0">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&amp;h=40&amp;fit=crop&amp;crop=face" alt="Profile" class="w-9 h-9 rounded-small object-cover border-2" style="border-color: rgba(124,106,247,0.5);">
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-surface-800" style="background: #22c55e;"></span>
+        </div>
+        <div class="logo-full flex flex-col min-w-0">
+          <span class="font-body font-semibold text-sm text-neutral-100 truncate">Alex Rivera</span>
+          <span class="font-body text-xs text-neutral-500 truncate">@alexrivera</span>
+        </div>
+      </a>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col" style="min-height: 100vh; background: #0d0d0f;">
+
+      <!-- Top Bar -->
+      <header class="flex items-center justify-between px-6 py-4 border-b border-surface-600 flex-shrink-0 sticky top-0 z-10" style="background: rgba(13,13,15,0.92); backdrop-filter: blur(12px);">
+        <div>
+          <h1 class="font-heading font-bold text-xl text-neutral-50" style="letter-spacing: var(--letter-spacing-heading);">Home Feed</h1>
+          <p class="font-body text-xs text-neutral-500 mt-0.5">Your personalized stream</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <!-- Search -->
+          <div class="flex items-center gap-2 px-3 py-2 rounded-small border border-surface-400 bg-surface-700" style="min-width: 200px;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <circle cx="6.5" cy="6.5" r="4.5" stroke="#7a7a8e" stroke-width="1.4"></circle>
+              <path d="M10 10L13 13" stroke="#7a7a8e" stroke-width="1.4" stroke-linecap="round"></path>
+            </svg>
+            <span class="font-body text-sm text-neutral-500">Search...</span>
+          </div>
+          <!-- Compose -->
+          <button class="flex items-center gap-2 px-4 py-2 rounded-small font-body font-semibold text-sm text-white" style="background: linear-gradient(135deg, #7c6af7 0%, #a78bfa 100%); box-shadow: 0 0 16px rgba(124,106,247,0.35);">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2V12M2 7H12" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            Post
+          </button>
+        </div>
+      </header>
+
+      <!-- Feed Area -->
+      <div class="flex-1 overflow-y-auto">
+        <div class="max-w-2xl mx-auto px-4 py-6 flex flex-col gap-4">
+
+          <!-- Post Card 1 -->
+          <article class="post-card rounded-large border border-surface-500 p-5" style="background: #141417;">
+            <!-- Post Header -->
+            <div class="flex items-start gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Maya Chen" class="w-11 h-11 rounded-small object-cover flex-shrink-0">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-body font-semibold text-sm text-neutral-100">Maya Chen</span>
+                  <span class="font-body text-xs text-neutral-500">@mayachen</span>
+                  <span class="w-1 h-1 rounded-full bg-neutral-600 flex-shrink-0"></span>
+                  <span class="font-body text-xs text-neutral-500">2h ago</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-0.5">
+                  <span class="px-2 py-0.5 rounded-full font-body text-xs font-medium" style="background: rgba(124,106,247,0.15); color: #a78bfa;">Design</span>
+                </div>
+              </div>
+              <button class="w-7 h-7 flex items-center justify-center rounded-small text-neutral-500 hover:text-neutral-300 hover:bg-surface-500 transition-colors flex-shrink-0">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="4" r="1.2" fill="currentColor"></circle>
+                  <circle cx="8" cy="8" r="1.2" fill="currentColor"></circle>
+                  <circle cx="8" cy="12" r="1.2" fill="currentColor"></circle>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Post Content -->
+            <p class="font-body text-sm text-neutral-300 leading-relaxed mb-4">
+              Just shipped the new design system for our product 🎉 After 3 months of iteration, we finally landed on a token-based approach that scales beautifully across all our surfaces. The key insight? Treat every visual decision as a variable, not a constant.
+            </p>
+
+            <!-- Image Preview -->
+            <div class="rounded-large overflow-hidden mb-4" style="max-height: 220px;">
+              <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&amp;h=220&amp;fit=crop" alt="Design system preview" class="w-full object-cover" style="height: 200px;">
+            </div>
+
+            <!-- Action Row -->
+            <div class="flex items-center gap-1 pt-1 border-t border-surface-500">
+              <button class="action-btn like-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 13.5C8 13.5 2 10 2 6C2 4.3 3.3 3 5 3C6.2 3 7.2 3.7 8 4.7C8.8 3.7 9.8 3 11 3C12.7 3 14 4.3 14 6C14 10 8 13.5 8 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>248</span>
+              </button>
+              <button class="action-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 3H14V11H9L6 14V11H2V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>42</span>
+              </button>
+              <button class="action-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8L7 4V6.5C7 6.5 13 6.5 13 12C13 12 11 9.5 7 9.5V12L3 8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>Share</span>
+              </button>
+              <button class="action-btn ml-auto flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 2H13V14L8 11L3 14V2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Post Card 2 -->
+          <article class="post-card rounded-large border border-surface-500 p-5" style="background: #141417;">
+            <div class="flex items-start gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Jordan Kim" class="w-11 h-11 rounded-small object-cover flex-shrink-0">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-body font-semibold text-sm text-neutral-100">Jordan Kim</span>
+                  <span class="font-body text-xs text-neutral-500">@jordankim</span>
+                  <span class="w-1 h-1 rounded-full bg-neutral-600 flex-shrink-0"></span>
+                  <span class="font-body text-xs text-neutral-500">5h ago</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-0.5">
+                  <span class="px-2 py-0.5 rounded-full font-body text-xs font-medium" style="background: rgba(34,197,94,0.12); color: #4ade80;">Engineering</span>
+                </div>
+              </div>
+              <button class="w-7 h-7 flex items-center justify-center rounded-small text-neutral-500 hover:text-neutral-300 hover:bg-surface-500 transition-colors flex-shrink-0">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="4" r="1.2" fill="currentColor"></circle>
+                  <circle cx="8" cy="8" r="1.2" fill="currentColor"></circle>
+                  <circle cx="8" cy="12" r="1.2" fill="currentColor"></circle>
+                </svg>
+              </button>
+            </div>
+
+            <p class="font-body text-sm text-neutral-300 leading-relaxed mb-4">
+              Hot take: most performance problems in modern web apps aren't caused by JavaScript bundle size — they're caused by layout thrashing and unoptimized render cycles. I've seen 40% perf gains just from fixing paint invalidation. Stop blaming the framework, start profiling properly 🔥
+            </p>
+
+            <!-- Code snippet block -->
+            <div class="rounded-small p-4 mb-4 font-mono text-xs text-green-400 overflow-x-auto" style="background: #0a0a0d; border: 1px solid #2e2e38;">
+              <div class="text-neutral-500 mb-1">// Before — triggers layout thrash</div>
+              <div class="text-red-400">elements.forEach(el =&gt; el.style.height = el.offsetHeight + 'px');</div>
+              <div class="text-neutral-500 mt-2 mb-1">// After — batch reads then writes</div>
+              <div class="text-green-400">const heights = elements.map(el =&gt; el.offsetHeight);</div>
+              <div class="text-green-400">elements.forEach((el, i) =&gt; el.style.height = heights[i] + 'px');</div>
+            </div>
+
+            <div class="flex items-center gap-1 pt-1 border-t border-surface-500">
+              <button class="action-btn like-btn liked flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm" style="color: #f472b6;">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 13.5C8 13.5 2 10 2 6C2 4.3 3.3 3 5 3C6.2 3 7.2 3.7 8 4.7C8.8 3.7 9.8 3 11 3C12.7 3 14 4.3 14 6C14 10 8 13.5 8 13.5Z"></path>
+                </svg>
+                <span>1.2k</span>
+              </button>
+              <button class="action-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 3H14V11H9L6 14V11H2V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>187</span>
+              </button>
+              <button class="action-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8L7 4V6.5C7 6.5 13 6.5 13 12C13 12 11 9.5 7 9.5V12L3 8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>Share</span>
+              </button>
+              <button class="action-btn ml-auto flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 2H13V14L8 11L3 14V2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Post Card 3 -->
+          <article class="post-card rounded-large border border-surface-500 p-5" style="background: #141417;">
+            <div class="flex items-start gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=44&amp;h=44&amp;fit=crop&amp;crop=face" alt="Priya Nair" class="w-11 h-11 rounded-small object-cover flex-shrink-0">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-body font-semibold text-sm text-neutral-100">Priya Nair</span>
+                  <span class="font-body text-xs text-neutral-500">@priyanair</span>
+                  <span class="w-1 h-1 rounded-full bg-neutral-600 flex-shrink-0"></span>
+                  <span class="font-body text-xs text-neutral-500">8h ago</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-0.5">
+                  <span class="px-2 py-0.5 rounded-full font-body text-xs font-medium" style="background: rgba(251,191,36,0.12); color: #fbbf24;">Product</span>
+                </div>
+              </div>
+              <button class="w-7 h-7 flex items-center justify-center rounded-small text-neutral-500 hover:text-neutral-300 hover:bg-surface-500 transition-colors flex-shrink-0">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="4" r="1.2" fill="currentColor"></circle>
+                  <circle cx="8" cy="8" r="1.2" fill="currentColor"></circle>
+                  <circle cx="8" cy="12" r="1.2" fill="currentColor"></circle>
+                </svg>
+              </button>
+            </div>
+
+            <p class="font-body text-sm text-neutral-300 leading-relaxed mb-4">
+              We ran an A/B test on our onboarding flow last week. Hypothesis: reducing steps from 7 to 4 would improve completion. Result: +34% completion rate, but DAU-7 dropped by 12%. Turns out the "friction" was actually teaching users the core value. Sometimes the long path is the right path 🧵
+            </p>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-3 gap-3 mb-4">
+              <div class="rounded-small p-3 text-center" style="background: #1a1a1f; border: 1px solid #2e2e38;">
+                <div class="font-heading font-bold text-lg text-neutral-50" style="color: #4ade80;">+34%</div>
+                <div class="font-body text-xs text-neutral-500 mt-0.5">Completion</div>
+              </div>
+              <div class="rounded-small p-3 text-center" style="background: #1a1a1f; border: 1px solid #2e2e38;">
+                <div class="font-heading font-bold text-lg" style="color: #f87171;">-12%</div>
+                <div class="font-body text-xs text-neutral-500 mt-0.5">DAU-7</div>
+              </div>
+              <div class="rounded-small p-3 text-center" style="background: #1a1a1f; border: 1px solid #2e2e38;">
+                <div class="font-heading font-bold text-lg text-neutral-50">4 → 7</div>
+                <div class="font-body text-xs text-neutral-500 mt-0.5">Reverted</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-1 pt-1 border-t border-surface-500">
+              <button class="action-btn like-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 13.5C8 13.5 2 10 2 6C2 4.3 3.3 3 5 3C6.2 3 7.2 3.7 8 4.7C8.8 3.7 9.8 3 11 3C12.7 3 14 4.3 14 6C14 10 8 13.5 8 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>892</span>
+              </button>
+              <button class="action-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 3H14V11H9L6 14V11H2V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>134</span>
+              </button>
+              <button class="action-btn flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8L7 4V6.5C7 6.5 13 6.5 13 12C13 12 11 9.5 7 9.5V12L3 8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+                <span>Share</span>
+              </button>
+              <button class="action-btn ml-auto flex items-center gap-1.5 px-3 py-2 rounded-small font-body text-sm text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 2H13V14L8 11L3 14V2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Load More -->
+          <div class="flex justify-center py-4">
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-small border border-surface-400 font-body text-sm text-neutral-400 hover:text-neutral-200 hover:border-surface-300 transition-colors" style="background: #141417;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2V7L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"></circle>
+              </svg>
+              Load more posts
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Right Panel (Trending / Suggestions) -->
+    <aside class="hidden xl:flex flex-col w-72 border-l border-surface-600 flex-shrink-0 px-4 py-6 gap-6" style="background: #0d0d0f; min-height: 100vh;">
+
+      <!-- Trending Topics -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm text-neutral-400 uppercase tracking-widest mb-3">Trending</h3>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small hover:bg-surface-700 cursor-pointer transition-colors">
+            <div>
+              <div class="font-body font-semibold text-sm text-neutral-200">#DesignSystems</div>
+              <div class="font-body text-xs text-neutral-500 mt-0.5">2.4k posts</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 11L11 3M11 3H5M11 3V9" stroke="#7a7a8e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small hover:bg-surface-700 cursor-pointer transition-colors">
+            <div>
+              <div class="font-body font-semibold text-sm text-neutral-200">#WebPerformance</div>
+              <div class="font-body text-xs text-neutral-500 mt-0.5">1.8k posts</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 11L11 3M11 3H5M11 3V9" stroke="#7a7a8e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small hover:bg-surface-700 cursor-pointer transition-colors">
+            <div>
+              <div class="font-body font-semibold text-sm text-neutral-200">#ProductThinking</div>
+              <div class="font-body text-xs text-neutral-500 mt-0.5">956 posts</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 11L11 3M11 3H5M11 3V9" stroke="#7a7a8e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2.5 rounded-small hover:bg-surface-700 cursor-pointer transition-colors">
+            <div>
+              <div class="font-body font-semibold text-sm text-neutral-200">#AITools</div>
+              <div class="font-body text-xs text-neutral-500 mt-0.5">3.1k posts</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 11L11 3M11 3H5M11 3V9" stroke="#7a7a8e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-surface-600"></div>
+
+      <!-- Who to Follow -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm text-neutral-400 uppercase tracking-widest mb-3">Who to Follow</h3>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Tom" class="w-9 h-9 rounded-small object-cover flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <div class="font-body font-semibold text-sm text-neutral-200 truncate">Tom Hanks</div>
+              <div class="font-body text-xs text-neutral-500 truncate">@tomhanks · 12.4k</div>
+            </div>
+            <button class="px-3 py-1.5 rounded-small font-body text-xs font-semibold border border-surface-400 text-neutral-300 hover:border-accent hover:text-accent transition-colors flex-shrink-0" style="--accent: #7c6af7;">
+              Follow
+            </button>
+          </div>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Sara" class="w-9 h-9 rounded-small object-cover flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <div class="font-body font-semibold text-sm text-neutral-200 truncate">Sara Okonkwo</div>
+              <div class="font-body text-xs text-neutral-500 truncate">@saraokonkwo · 8.7k</div>
+            </div>
+            <button class="px-3 py-1.5 rounded-small font-body text-xs font-semibold border border-surface-400 text-neutral-300 hover:border-surface-200 hover:text-neutral-100 transition-colors flex-shrink-0">
+              Follow
+            </button>
+          </div>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=36&amp;h=36&amp;fit=crop&amp;crop=face" alt="Luca" class="w-9 h-9 rounded-small object-cover flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <div class="font-body font-semibold text-sm text-neutral-200 truncate">Luca Moretti</div>
+              <div class="font-body text-xs text-neutral-500 truncate">@lucamoretti · 5.2k</div>
+            </div>
+            <button class="px-3 py-1.5 rounded-small font-body text-xs font-semibold border border-surface-400 text-neutral-300 hover:border-surface-200 hover:text-neutral-100 transition-colors flex-shrink-0">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
